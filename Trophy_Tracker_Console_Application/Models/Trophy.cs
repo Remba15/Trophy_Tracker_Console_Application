@@ -16,7 +16,7 @@ namespace Trophy_Tracker_Console_Application.Models
 
         public override string ToString()
         {
-            return "Type: " + this.Type + "\nTitle"
+            return "Type: " + this.Type + "\nTitle: " + this.Title + "\n\n" + this.Description;
         }
     }
 }
