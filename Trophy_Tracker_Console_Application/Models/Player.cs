@@ -15,7 +15,7 @@ namespace Trophy_Tracker_Console_Application.Models
 
         public override string ToString()
         {
-            return "Username: " + this.Username + "\nRegion: " + this.Region + "\nDate registered: " + this.RegistrationDate.Value.ToString("dd.MM.yyyy");
+            return "Username: " + this.Username + " | Region: " + this.Region + " | Date registered: " + this.RegistrationDate.Value.ToString("dd.MM.yyyy");
         }
 
     }
