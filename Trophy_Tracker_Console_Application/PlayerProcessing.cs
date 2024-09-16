@@ -9,12 +9,13 @@ namespace Trophy_Tracker_Console_Application
 {
     internal class PlayerProcessing
     {
-        public List<Player> Players;
-        private Menu menu;
+        public List<Player> Players { get; set; }
+        public GameProcessing GameProcessing { get; set; }
 
         public PlayerProcessing()
         {
             Players = new List<Player>();
+            GameProcessing = new GameProcessing();
             if (Utility.Utility.DEV)
             {
                 LoadTestData();
@@ -50,8 +51,9 @@ namespace Trophy_Tracker_Console_Application
             Console.WriteLine("\t2. Insert new player");
             Console.WriteLine("\t3. Update player info");
             Console.WriteLine("\t4. Delete player");
+            Console.WriteLine("\t5. Select player profile");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\t5. Return to main menu");
+            Console.WriteLine("\t6. Return to main menu");
             Console.ForegroundColor = ConsoleColor.White;
             OptionChoosing();
 
@@ -59,13 +61,12 @@ namespace Trophy_Tracker_Console_Application
 
         private void OptionChoosing()
         {
-
-            switch (Utility.Utility.InsertNumberRange("\nChoose an option", 1, 5))
+            switch (Utility.Utility.InsertNumberRange("\nChoose an option", 1, 6))
             {
                 case 1:
                     Console.Clear();
                     ShowAllPlayers();
-                    PressAnyKeyToReturn();
+                    Utility.Utility.PressAnyKeyToReturn();
                     ShowMenu();
                     break;
                 case 2:
@@ -85,10 +86,24 @@ namespace Trophy_Tracker_Console_Application
                     break;
                 case 5:
                     Console.Clear();
+                    ShowAllPlayers();
+                    SelectPlayer();
+                    break;
+                case 6:
+                    Console.Clear();
                     break;
             }
-
         }
+
+        private void SelectPlayer()
+        {
+            Player chosenPlayer = Players[Utility.Utility.InsertNumberRange("Choose your player profile", 1, Players.Count) - 1];
+            Console.Clear();
+            GameProcessing.ShowMenu(chosenPlayer);
+            ShowMenu();
+        }
+
+        
 
         private void DeletePlayer()
         {
@@ -97,8 +112,7 @@ namespace Trophy_Tracker_Console_Application
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\nPlayer succesfully removed!");
             Console.ForegroundColor = ConsoleColor.White;
-            PressAnyKeyToReturn();
-
+            Utility.Utility.PressAnyKeyToReturn();
         }
 
         private void UpdatePlayer()
@@ -113,17 +127,17 @@ namespace Trophy_Tracker_Console_Application
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nUpdate canceled!");
                 Console.ForegroundColor = ConsoleColor.White;
-                PressAnyKeyToReturn();
+                Utility.Utility.PressAnyKeyToReturn();
             }
             else
             {
                 var chosenPlayer = Players[choice - 1];
-                chosenPlayer.Username = Utility.Utility.InsertString("Insert username");
-                chosenPlayer.Region = Utility.Utility.InsertString("Insert region");
+                chosenPlayer.Username = Utility.Utility.InsertString("Update username");
+                chosenPlayer.Region = Utility.Utility.InsertString("Update region");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\nPlayer successfully updated!");
                 Console.ForegroundColor = ConsoleColor.White;
-                PressAnyKeyToReturn();
+                Utility.Utility.PressAnyKeyToReturn();
             }
         }
 
@@ -139,7 +153,7 @@ namespace Trophy_Tracker_Console_Application
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\nInsertion complete!");
             Console.ForegroundColor = ConsoleColor.White;
-            PressAnyKeyToReturn();
+            Utility.Utility.PressAnyKeyToReturn();
         }
 
         private void ShowAllPlayers()
@@ -154,11 +168,6 @@ namespace Trophy_Tracker_Console_Application
             }
         }
 
-        private void PressAnyKeyToReturn()
-        {
-            Console.WriteLine("\nPress any key to return...");
-            Console.ReadKey();
-            Console.Clear();
-        }
+        
     }
 }

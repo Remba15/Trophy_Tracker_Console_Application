@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trophy_Tracker_Console_Application.Models
 {
-    internal class Identity
+    internal abstract class Identity
     {
 
         public int ID { get; set; }

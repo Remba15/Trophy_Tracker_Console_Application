@@ -37,10 +37,9 @@ namespace Trophy_Tracker_Console_Application
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\t1. Player Profile");
-            Console.WriteLine("\t2. Game Info");
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\t3. Exit application");
+            Console.WriteLine("\t2. Exit application");
 
             Console.ForegroundColor = ConsoleColor.White;
             OptionChoosing();
@@ -58,11 +57,6 @@ namespace Trophy_Tracker_Console_Application
                     ShowMenu();
                     break;
                 case 2:
-                    Console.Clear();
-                    Console.WriteLine("Game Info");
-                    ShowMenu();
-                    break;
-                case 3:
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\n\tThank you for using Trophy Tracker! Goodbye! o/");
                     Console.ForegroundColor = ConsoleColor.White;

@@ -51,5 +51,12 @@ namespace Trophy_Tracker_Console_Application.Utility
             }
         }
 
+        public static void PressAnyKeyToReturn()
+        {
+            Console.WriteLine("\nPress any key to return...");
+            Console.ReadKey();
+            Console.Clear();
+        }
+
     }
 }
