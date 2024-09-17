@@ -12,11 +12,11 @@ namespace Trophy_Tracker_Console_Application.Models
         public string? Title { get; set; }
         public string? Description { get; set; }
         public int? GameID { get; set; }
-        public string? Type { get; set; }
+        public string? TrophyType { get; set; }
 
         public override string ToString()
         {
-            return "Type: " + this.Type + "\nTitle: " + this.Title + "\n\n" + this.Description;
+            return "Type: " + this.TrophyType + "|" + "Title: " + this.Title + "|" + this.Description;
         }
     }
 }

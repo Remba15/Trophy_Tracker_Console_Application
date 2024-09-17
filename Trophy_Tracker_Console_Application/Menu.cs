@@ -24,6 +24,7 @@ namespace Trophy_Tracker_Console_Application
             Console.WriteLine("#####################################");
             Console.WriteLine("     Trophy Tracker Application      ");
             Console.WriteLine("#####################################");
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
         }
 

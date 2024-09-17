@@ -40,6 +40,7 @@ namespace Trophy_Tracker_Console_Application
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("#####################################");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
         }
 
         public void ShowMenu()
@@ -97,7 +98,7 @@ namespace Trophy_Tracker_Console_Application
 
         private void SelectPlayer()
         {
-            Player chosenPlayer = Players[Utility.Utility.InsertNumberRange("Choose your player profile", 1, Players.Count) - 1];
+            Player chosenPlayer = Players[Utility.Utility.InsertNumberRange("\nChoose your player profile", 1, Players.Count) - 1];
             Console.Clear();
             GameProcessing.ShowMenu(chosenPlayer);
             ShowMenu();

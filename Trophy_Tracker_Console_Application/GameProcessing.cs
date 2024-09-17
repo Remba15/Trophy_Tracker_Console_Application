@@ -11,10 +11,12 @@ namespace Trophy_Tracker_Console_Application
     {
 
         public List<Game> Games { get; set; }
+        public TrophyProcessing TrophyProcessing { get; set; }
 
         public GameProcessing()
         {
             Games = new List<Game>();
+            TrophyProcessing = new TrophyProcessing();
             if (Utility.Utility.DEV)
             {
                 LoadTestData();
@@ -54,7 +56,7 @@ namespace Trophy_Tracker_Console_Application
         {
             PrintGameInfoHeader();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\nHello " + player.Username + "!");
+            Console.WriteLine("Hello " + player.Username + "!");
             Console.ForegroundColor = ConsoleColor.White;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -97,12 +99,22 @@ namespace Trophy_Tracker_Console_Application
                     break;
                 case 5:
                     Console.Clear();
-                    
+                    SelectGame(player);
                     break;
                 case 6:
                     Console.Clear();
                     break;
             }
+
+        }
+
+        private void SelectGame(Player player)
+        {
+            ShowAllGames();
+            var chosenGame = Games[Utility.Utility.InsertNumberRange("\nChoose a game", 1, Games.Count) - 1];
+            Console.Clear();
+            TrophyProcessing.ShowMenu(chosenGame);
+            ShowMenu(player);
 
         }
 
@@ -176,13 +188,14 @@ namespace Trophy_Tracker_Console_Application
 
         private void PrintGameInfoHeader()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("#####################################");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("           Game Info Menu            ");
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("#####################################");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
         }
     }
 }
